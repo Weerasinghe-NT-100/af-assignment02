@@ -47,11 +47,11 @@ return (
     <div className="form">
         <div className="form-group">
             <label htmlFor="username">Email</label>
-            <input type="text" placeholder="Email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+            <input type="text" placeholder="Email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} required/>
         </div>
         <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" placeholder="Password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+            <input type="password" placeholder="Password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} required/>
         </div>
         <div className="lefcontent">fogotton password?</div>
     </div>

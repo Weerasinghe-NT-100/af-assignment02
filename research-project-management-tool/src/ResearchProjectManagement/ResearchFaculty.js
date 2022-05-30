@@ -17,7 +17,7 @@ return (
 
 <a href='/SupOperations'><button className="facbttn">Faculty of Computing</button></a>
 
- <button className="facbttn">Faculty of Engineering</button>
+<a href='/SupOperations'><button className="facbttn">Faculty of Engineering</button></a>
 
  <button className="facbttn">Faculty of Business</button>
  

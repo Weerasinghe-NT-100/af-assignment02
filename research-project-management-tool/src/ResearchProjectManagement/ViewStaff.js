@@ -6,10 +6,10 @@ import {Row,Col} from 'react-bootstrap';
 import {useHistory} from "react-router";
 import { useParams } from 'react-router-dom';
 
-function ViewStaff({setSendEmail}) {
+function ViewStaff() {
 
     const {email}=useParams();
-    console.log({email});
+    console.log(`${email}`);
     const [StaffList,setStafflist]=useState([]);
 
     var array;

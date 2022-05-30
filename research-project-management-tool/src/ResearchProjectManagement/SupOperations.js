@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import {Row,Col, Table} from 'react-bootstrap';
 import LiveChats from './LiveChats';
 import sf from '../Docus/5aed2c41-51a9-40ce-b6aa-c46f7313f9d3-1653835522736.pdf';
+import { useParams } from 'react-router-dom';
 
 function SupOperations() {
 
@@ -135,7 +136,7 @@ return (
 
  <div className="card1">
    <div className="dates">
-     <h1>Research Project Management of Faculty of Computing</h1>
+     <h1>Research Project Management of {name}</h1>
    </div>
 
    <div className="lines"></div>  
@@ -203,7 +204,7 @@ return (
 
  </div>
  </div>
- <div className="lines"></div>
+ <div className="lines1"></div>
 </div>
  </>
     );

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row,Col, Table} from 'react-bootstrap';
 import { Tab } from 'bootstrap';
 
-function ViewTopics({setSendEmail}) {
+function ViewTopics() {
 
   const[TpoicsList,setTopicslist]=useState([]);
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AllRegister.css';
 import axios from 'axios';
+import {useHistory,Redirect} from "react-router";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row,Col} from 'react-bootstrap';
 import researchTool6 from "../ResearchTools/researchTool6.jpg";
@@ -19,6 +20,8 @@ const AllRegister=()=> {
   ConfirmPassword:'',
     }
   );
+
+  const history=useHistory();
 
 
   const parseData=(e)=>{
@@ -41,6 +44,8 @@ const AllRegister=()=> {
     axios.post("http://localhost:8071/staffRegister/add", data).then(()=>{
 
       alert("Staff Member is added");
+      history.push('/HLogin');
+      <Redirect to={'/HLogin'} /> 
       }).catch((err)=>{
         alert(err);
       })
@@ -71,13 +76,13 @@ return (
   <Col>
 <div className="form-group">
  <label>First name</label>
- <input type="text" name="staffFirstName" className="form-control" id="staffFirstName" placeholder="First name" value={newStaff.staffFirstName} onChange={handleChange}/>
+ <input type="text" name="staffFirstName" className="form-control" id="staffFirstName" placeholder="First name" value={newStaff.staffFirstName} onChange={handleChange} required/>
  </div>
 </Col>
 <Col>
 <div className="form-group">
  <label>Last name</label>
- <input type="text" name="staffLastName" className="form-control" id="staffLastName" placeholder="Last name" value={newStaff.staffLastName} onChange={handleChange}/>
+ <input type="text" name="staffLastName" className="form-control" id="staffLastName" placeholder="Last name" value={newStaff.staffLastName} onChange={handleChange} required/>
  </div>
  </Col>
 </Row>
@@ -86,13 +91,13 @@ return (
   <Col>
 <div className="form-group">
  <label>Staff Id</label>
- <input type="text" name="staffId" className="form-control" id=" staffId" placeholder="Staff id" value={newStaff.staffId} onChange={handleChange}/>
+ <input type="text" name="staffId" className="form-control" id=" staffId" placeholder="Staff id" value={newStaff.staffId} onChange={handleChange} required/>
 </div>
 </Col>
 <Col>
 <div className="form-group">
  <label>Profile Photo </label>
- <input type="file" name="imageFiles" className="form-control" id="imageFiles" placeholder="Profile Photo" onChange={handlePhoto}/>
+ <input type="file" name="imageFiles" className="form-control" id="imageFiles" placeholder="Profile Photo" onChange={handlePhoto} required/>
 </div>
 </Col>
 
@@ -102,7 +107,7 @@ return (
   <Col>
 <div className="form-group">
  <label>Position</label>
- <select className="select" name="staffPosition" id="staffPosition" value={newStaff.staffPosition} onChange={handleChange}>
+ <select className="select" name="staffPosition" id="staffPosition" value={newStaff.staffPosition} onChange={handleChange} required>
    <option value=""></option>
    <option value="Supervisor">Supervisor</option>
    <option value="Co-supervisor">Co-supervisor</option>
@@ -114,7 +119,7 @@ return (
 <Col>
 <div className="form-group">
  <label>Email</label>
- <input type="email" name="staffEmail" className="form-control" id="staffEmail" placeholder="Email" value={newStaff.staffEmail} onChange={handleChange}/>
+ <input type="email" name="staffEmail" className="form-control" id="staffEmail" placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value={newStaff.staffEmail} onChange={handleChange} required/>
 </div>
 </Col>
 
@@ -124,13 +129,13 @@ return (
 <Col>
 <div className="form-group">
  <label>Password</label>
- <input type="password" name="staffPassword" className="form-control" id="staffPassword" placeholder="Password" value={newStaff.staffPassword} onChange={handleChange}/>
+ <input type="password" name="staffPassword" className="form-control" id="staffPassword" placeholder="Password" value={newStaff.staffPassword} onChange={handleChange} required/>
 </div>
 </Col>
  <Col>
 <div className="form-group">
  <label>Confirm Password</label>
- <input type="password" name="ConfirmPassword" className="form-control" id="ConfirmPassword" placeholder="Confirm password" value={newStaff.ConfirmPassword} onChange={handleChange}/>
+ <input type="password" name="ConfirmPassword" className="form-control" id="ConfirmPassword" placeholder="Confirm password" value={newStaff.ConfirmPassword} onChange={handleChange} required/>
 </div>
 </Col>
 </Row>
