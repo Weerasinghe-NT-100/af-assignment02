@@ -21,8 +21,8 @@ function HLogin({setLoginStaff}) {
           setLoginStaff(res.data.user);
 
           if(res.status===200){
-            history.push("/ViewStaff");
-            return <Redirect to="/ViewStaff" /> 
+            history.push(`/ViewStaff/${email}`);
+            return <Redirect to={`/ViewStaff/${email}`} /> 
            }
 
         }).catch((err)=>{

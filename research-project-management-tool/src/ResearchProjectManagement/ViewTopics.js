@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row,Col, Table} from 'react-bootstrap';
 import { Tab } from 'bootstrap';
 
-function ViewTopics() {
+function ViewTopics({setSendEmail}) {
 
   const[TpoicsList,setTopicslist]=useState([]);
 
@@ -34,13 +34,23 @@ function ViewTopics() {
           const deleteData=await res2.json();
           console.log(deleteData);
 
-          if(res2.status===500||deleteData){
-            console.log("error");
+          if(res2.status==200||deleteData){
+            alert("Topic deleted");
           }
 
           else{
-            alert("Topic deleted");
+            alert("Error");
           }
+        }
+
+        const sendEmail=async(email)=>{
+          axios.get(`http://localhost:8071/studentTopic/sendemail/${email}`).then((res)=>{
+            if(res.status==200){
+            alert("Confirmation Email is sent");
+            }
+          }).catch((err)=>{
+            alert(err.message);
+          })
         }
 
         var viewItems_HTMLTABLE="";
@@ -53,9 +63,10 @@ function ViewTopics() {
           <Row key={data._id}>
           <Col className="Tabletd">{data.GroupId}</Col>
           <Col className="Tabletd">{data.GroupDetails}</Col>
+          <Col className="Tabletd">{data.LeaderEmail}</Col>
           <Col className="Tabletd">{data.ResearchTopic}</Col>
           <Col><Col><button  onClick={()=>deleteTopic(data._id)} className="btnn1">Rejected</button></Col>
-          <Col><button onClick={()=>acceptTopic(data._id)} className="btnn2">Accept</button></Col></Col>
+          <Col><button onClick={()=>sendEmail(data.LeaderEmail)} className="btnn2">Accept</button></Col></Col>
           </Row>
 
         );

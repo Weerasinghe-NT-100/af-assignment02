@@ -14,6 +14,12 @@ const TopicsSchema=new Schema({
         required:true
     },
 
+    LeaderEmail:{
+        type:String,
+        unique:true,
+        required:true
+    },
+
     ResearchTopic:{
         type:String,
         maxlength:100,

@@ -6,7 +6,7 @@ let MarkingScheme=require("../Models/MarkingScheme.js")
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'C:/Users/Asela/OneDrive/Documents/Research Project Management Tool/research-project-management-tool/src/ResearchProjectManagement');
+        cb(null, 'C:/Users/Asela/OneDrive/Documents/Research Project Management Tool/af-assignment02/research-project-management-tool/src/Docus');
     },
     filename: function(req, file, cb) {   
         cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));

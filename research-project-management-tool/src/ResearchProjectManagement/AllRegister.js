@@ -20,7 +20,6 @@ const AllRegister=()=> {
     }
   );
 
-  
 
   const parseData=(e)=>{
 

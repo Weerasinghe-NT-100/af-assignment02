@@ -4,9 +4,12 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row,Col} from 'react-bootstrap';
 import {useHistory} from "react-router";
+import { useParams } from 'react-router-dom';
 
-function ViewStaff(props) {
+function ViewStaff({setSendEmail}) {
 
+    const {email}=useParams();
+    console.log({email});
     const [StaffList,setStafflist]=useState([]);
 
     var array;
@@ -17,7 +20,7 @@ function ViewStaff(props) {
 
     useEffect(()=>{
 
-      function getStaff(email){
+      function getStaff(){
         axios.get(`http://localhost:8071/staffRegister/get/${email}`).then((res)=>{
           setStafflist(res.data);
         }).catch((err)=>{

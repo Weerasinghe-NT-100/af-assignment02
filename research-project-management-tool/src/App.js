@@ -15,7 +15,7 @@ function App() {
           <Route path="/" exact component={() => <LoginRegister />} />
           <Route path="/HLogin"><HLogin setLoginStaff={setLoginStaff}/></Route>
           <Route path="/AllRegister" exact component={() => <AllRegister />} />
-          <Route path="/ViewStaff"><ViewStaff/></Route>
+          <Route path="/ViewStaff/:email" exact component={() => <ViewStaff />} />
           <Route path="/ViewTopics" exact component={() => <ViewTopics />} />
           <Route path="/MarkingScheme" exact component={() => <MarkingScheme />} />
           <Route path="/SupOperations" exact component={() => <SupOperations />} />

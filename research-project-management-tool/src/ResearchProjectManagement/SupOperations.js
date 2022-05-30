@@ -2,8 +2,10 @@ import React,{useState,useEffect} from 'react';
 import './SupOperations.css'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 import {Row,Col, Table} from 'react-bootstrap';
 import LiveChats from './LiveChats';
+import sf from '../Docus/5aed2c41-51a9-40ce-b6aa-c46f7313f9d3-1653835522736.pdf';
 
 function SupOperations() {
 
@@ -71,7 +73,7 @@ function SupOperations() {
         },[]);
 
         var viewItems_HTMLTABLE="";
-        var viewEvaluated_HTMLTABLE=""; 
+        var viewEvaluated_HTMLTABLE="";
 
     if(TopicList){
 
@@ -83,7 +85,7 @@ function SupOperations() {
          <div className="card-body">
           <Row>
           <Col><h6 className="card-title">{data.EvaluationDocumentName}</h6>
-          <a href={`./${data.markingPaper}`} target='_blank'><button className="btnn2">Click here to open the markingScheme in a new tab</button></a></Col>
+          <a href={require(`../Docus/${data.markingPaper}`).default} target='_blank'><button className="btnn2">Click here to open the markingScheme in a new tab</button></a></Col>
           <Col></Col>
          </Row>
          <div className="line"></div>
@@ -108,7 +110,7 @@ function SupOperations() {
        <div className="card-body">
         <Row>
         <Col><h6 className="card-title"></h6>
-        <a href={`./${data.Pmark}`} target='_blank'><button className="btnn1">Click here to open the {data.Nevaluate} marks in a new tab</button></a></Col>
+        <a href={require(`../Docus/${data.Pmark}`).default} target='_blank'><button className="btnn1">Click here to open the {data.Nevaluate} marks in a new tab</button></a></Col>
         <Col></Col>
        </Row>
        <div className="line"></div>

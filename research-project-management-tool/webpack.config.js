@@ -14,6 +14,7 @@ module.exports = {
     modules: [path.join(__dirname, 'src'), 'node_modules'],
     alias: {
       react: path.join(__dirname, 'node_modules', 'react'),
+      public: path.join(__dirname, '../public'),
     },
   },
   module: {
@@ -26,15 +27,8 @@ module.exports = {
         },
       },
       {
-        test: /\.(gif|pdf)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
+        test: /\.pdf$/,
+        use: 'file-loader?name=[path][name].[ext]'
       },
       {
         test: /\.css$/,

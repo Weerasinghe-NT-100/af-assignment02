@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import {Navbar,Container,Nav} from "react-bootstrap";
+import st from '../ResearchTools/st.jpg';
 
 function Header() {
 
@@ -8,8 +9,11 @@ return (
 <>
 <Container>
   <Navbar expand="lg" variant="light" bg="light">
+     <div className="images12"><img src={st}/></div>
     <Container>
-      <Navbar.Brand href="#">Research Project Management </Navbar.Brand>
+      <Navbar.Brand><div id="dates1">
+     <h2>Research Project Management</h2>
+   </div></Navbar.Brand>
     </Container>
   </Navbar>
 </Container>
