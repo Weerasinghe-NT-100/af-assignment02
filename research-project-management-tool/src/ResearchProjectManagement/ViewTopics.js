@@ -91,6 +91,7 @@ return (
 <Row>
   <Col><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Group Id</h5></Col>
   <Col><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Group Details</h5></Col>
+  <Col><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Leader Email</h5></Col>
   <Col><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Research Topic</h5></Col>
   <Col><Col></Col></Col>
   

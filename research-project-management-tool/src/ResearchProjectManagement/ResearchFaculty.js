@@ -15,13 +15,13 @@ return (
 <div className="images8">
 <div className="images6">
 
-<a href='/SupOperations'><button className="facbttn">Faculty of Computing</button></a>
+<a href={`/SupOperations/${'Faculty of Computing'}`}><button className="facbttn">Faculty of Computing</button></a>
 
-<a href='/SupOperations'><button className="facbttn">Faculty of Engineering</button></a>
+<a href={`/SupOperations/${'Faculty of Engineering'}`}><button className="facbttn">Faculty of Engineering</button></a>
 
- <button className="facbttn">Faculty of Business</button>
+ <a href={`/SupOperations/${'Faculty of Business'}`}><button className="facbttn">Faculty of Business</button></a>
  
- <button className="facbttn">Faculty of Humanity</button>
+ <a href={`/SupOperations/${'Faculty of Humanity'}`}><button className="facbttn">Faculty of Humanity</button></a>
   </div>
 
   </div>

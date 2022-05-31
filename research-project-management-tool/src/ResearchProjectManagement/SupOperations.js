@@ -5,10 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import {Row,Col, Table} from 'react-bootstrap';
 import LiveChats from './LiveChats';
-import sf from '../Docus/5aed2c41-51a9-40ce-b6aa-c46f7313f9d3-1653835522736.pdf';
 import { useParams } from 'react-router-dom';
 
 function SupOperations() {
+
+  const {name}=useParams("");
 
   const[TopicList,setTopiclist]=useState([]);
   const[EvaluatedList,setEvaluatedlist]=useState([]);

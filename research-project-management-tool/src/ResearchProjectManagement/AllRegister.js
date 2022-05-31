@@ -119,7 +119,7 @@ return (
 <Col>
 <div className="form-group">
  <label>Email</label>
- <input type="email" name="staffEmail" className="form-control" id="staffEmail" placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value={newStaff.staffEmail} onChange={handleChange} required/>
+ <input type="email" name="staffEmail" className="form-control" id="staffEmail" placeholder="Email"  value={newStaff.staffEmail} onChange={handleChange} required/>
 </div>
 </Col>
 

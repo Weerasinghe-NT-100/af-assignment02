@@ -1,3 +1,4 @@
+const mongoose=require("mongoose");
 const router=require("express").Router();
 const jwt=require("jsonwebtoken");
 const bcrypt=require("bcrypt");
@@ -130,6 +131,19 @@ router.route("/get/:email").get(async(req,res)=>{
             res.send("not register");
         }
     })
+})
+
+router.route("/get/staffMember/:id").get(async(req,res)=>{
+    const Staffid=req.params.id;
+
+    const staffMembers=await StaffRegister.findById(Staffid)
+    .then((staffmembers)=>{
+        res.status(200).send({status:"Staff Member found",staffmembers})
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({status:"Error with get user",error:err.message})
+    })
+
 })
 
 router.route("/login").post(async(req,res)=>{

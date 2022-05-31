@@ -14,11 +14,11 @@ function App() {
         <Switch>
           <Route path="/" exact component={() => <LoginRegister />} />
           <Route path="/HLogin"><HLogin setLoginStaff={setLoginStaff}/></Route>
-          <Route path="/ViewStaff/:email" exact component={() => <ViewStaff />} />
+          <Route path="/ViewStaff/:id" exact component={() => <ViewStaff />} />
           <Route path="/AllRegister" exact component={() => <AllRegister />} />
           <Route path="/ViewTopics" exact component={() => <ViewTopics />} />
           <Route path="/MarkingScheme" exact component={() => <MarkingScheme />} />
-          <Route path="/SupOperations" exact component={() => <SupOperations />} />
+          <Route path="/SupOperations/:name" exact component={() => <SupOperations />} />
           <Route path="/MarkingSchemfiles/:id" exact component={() => <MarkingSchemfiles />} />
           <Route path="/SupChatHandle" exact component={() => <SupChatHandle />} />
           <Route path="/SupHChat" exact component={() => <SupHChat/>} />

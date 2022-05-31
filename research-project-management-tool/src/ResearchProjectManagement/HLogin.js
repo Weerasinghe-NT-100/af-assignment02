@@ -9,8 +9,13 @@ function HLogin({setLoginStaff}) {
 
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const [StaffList,setStafflist]=useState([]);
 
     const history = useHistory();
+
+    var array;
+    var res3;
+    var res1;
     
       function login (e) {
   
@@ -20,11 +25,27 @@ function HLogin({setLoginStaff}) {
           alert("Login succes");
           setLoginStaff(res.data.user);
 
-          if(res.status===200){
-            history.push(`/ViewStaff/${email}`);
-            return <Redirect to={`/ViewStaff/${email}`} /> 
-           }
+          if(res.status==200){
 
+              axios.get(`http://localhost:8071/staffRegister/get/${staffMember.email}`).then((res)=>{
+              setStafflist(res.data);
+
+               
+           array=Object.entries(res.data);
+           res3=Object.values(array);
+           res1=Object.values(res3[1]);
+           console.log(res1[1]);
+           res1.map((data)=>{
+                history.push(`/ViewStaff/${data._id}`);
+                return <Redirect to={`/ViewStaff/${data._id}`} /> 
+               })
+              
+              }).catch((err)=>{
+              alert(err.message);
+            })
+           }
+          
+    
         }).catch((err)=>{
           alert(err.message);
         })
