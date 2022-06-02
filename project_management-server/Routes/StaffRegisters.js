@@ -77,9 +77,10 @@ http://localhost:8071/staffRegister
 
 router.route("/").get((req,res)=>{
     StaffRegister.find().then((StaffRegisters)=>{
-        res.json(StaffRegisters)
+        res.status(200).json(StaffRegisters);
     }).catch((err)=>{
-        console.log(err)
+        console.log(err);
+        res.status(404).json("Not found");
     })
 })
 

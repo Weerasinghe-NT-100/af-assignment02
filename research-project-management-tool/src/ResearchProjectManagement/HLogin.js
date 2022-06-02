@@ -17,21 +17,39 @@ function HLogin({setLoginStaff}) {
     var res3;
     var res1;
     
-      function login (e) {
-  
+        const login=async(e)=>{
+
           e.preventDefault();
-          const staffMember={email,password};
-          axios.post("http://localhost:8071/staffRegister/login",staffMember).then(res=>{
-          alert("Login succes");
-          setLoginStaff(res.data.user);
+          const res= await fetch("http://localhost:8071/staffRegister/login",{
+            method:"POST",
+            headers:{
+               "Content-Type":"application/json", 
+            }
+          }); 
+          
+          const data=await res.json();
+          console.log(data);
+  
+          if(res.status===200||data){
+            alert("Login succes");
+            setLoginStaff(data.user);
 
-          if(res.status==200){
+            const res4= await fetch(`http://localhost:8071/staffRegister/get/${email}`,{
+            method:"GET",
+            headers:{
+               "Content-Type":"application/json", 
+            }
+          }); 
 
-              axios.get(`http://localhost:8071/staffRegister/get/${staffMember.email}`).then((res)=>{
-              setStafflist(res.data);
+          const data1=await res4.json();
+          console.log(data1);
+
+          if(res4.status===200||data1){
+
+            setStafflist(data1);
 
                
-           array=Object.entries(res.data);
+           array=Object.entries(data1);
            res3=Object.values(array);
            res1=Object.values(res3[1]);
            console.log(res1[1]);
@@ -39,18 +57,17 @@ function HLogin({setLoginStaff}) {
                 history.push(`/ViewStaff/${data._id}`);
                 return <Redirect to={`/ViewStaff/${data._id}`} /> 
                })
-              
-              }).catch((err)=>{
-              alert(err.message);
-            })
-           }
-          
-    
-        }).catch((err)=>{
+          }
+
+          else{
+            alert(err.message);
+          }
+          }
+        else{
           alert(err.message);
-        })
-        
-  }
+        }
+      }
+
 
 return (
  <>

@@ -11,16 +11,28 @@ function ViewTopics() {
 
     useEffect(()=>{
 
-       function getTopics(){
-         axios.get("http://localhost:8071/studentTopic").then((res)=>{
-           setTopicslist(res.data);
-         }).catch((err)=>{
-           alert(err.message);
-         })
-       }
+       const getTopics=async()=>{
+        const res= await fetch("http://localhost:8071/studentTopic",{
+          method:"GET",
+          headers:{
+             "Content-Type":"application/json", 
+          }
+        }); 
+        
+        const data=await res.json();
+        console.log(data);
+
+        if(res.status===200||data){
+          setTopicslist(data);
+        }
+
+        else{
+          alert(err.message);
+        }
+      }
         getTopics();
 
-        },[]);
+  },[]);
 
         const deleteTopic=async(_id)=>{
           const res2=await fetch(`http://localhost:8071/studentTopic/delete/${_id}`,{

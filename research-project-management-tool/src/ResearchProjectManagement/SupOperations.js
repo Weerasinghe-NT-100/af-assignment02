@@ -48,20 +48,44 @@ function SupOperations() {
 
     useEffect(()=>{
 
-       function getTopics(){
-         axios.get("http://localhost:8071/markingScheme").then((res)=>{
-           setTopiclist(res.data);
-         }).catch((err)=>{
-           alert(err.message);
-         })
-       }
+       const getTopics=async()=>{
+        const res= await fetch("http://localhost:8071/markingScheme",{
+          method:"GET",
+          headers:{
+             "Content-Type":"application/json", 
+          }
+        }); 
+        
+        const data=await res.json();
+        console.log(data);
 
-       function getEvaluated(){
-        axios.get("http://localhost:8071/presentationScheme").then((res)=>{
-          setEvaluatedlist(res.data);
-        }).catch((err)=>{
+        if(res.status===200||data){
+          setTopiclist(data);
+        }
+
+        else{
           alert(err.message);
-        })
+        }
+      }
+
+      const getEvaluated=async()=>{
+        const res= await fetch("http://localhost:8071/presentationScheme",{
+          method:"GET",
+          headers:{
+             "Content-Type":"application/json", 
+          }
+        }); 
+        
+        const data=await res.json();
+        console.log(data);
+
+        if(res.status===200||data){
+          setEvaluatedlist(data);
+        }
+
+        else{
+          alert(err.message);
+        }
       }
 
       getTopics();

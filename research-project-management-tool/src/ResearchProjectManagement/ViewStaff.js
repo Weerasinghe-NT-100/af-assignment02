@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react';
 import './ViewStaff.css';
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row,Col} from 'react-bootstrap';
 import {useHistory} from "react-router";
@@ -16,17 +15,27 @@ function ViewStaff() {
     var array;
     var res;
     var res1;
-    
-    const histoy=useHistory();
 
     useEffect(()=>{
 
-      function getStaff(){
-        axios.get(`http://localhost:8071/staffRegister/get/staffMember/${id}`).then((res)=>{
-          setStafflist(res.data);
-        }).catch((err)=>{
+      const getStaff=async()=>{
+        const res= await fetch(`http://localhost:8071/staffRegister/get/staffMember/${id}`,{
+          method:"GET",
+          headers:{
+             "Content-Type":"application/json", 
+          }
+        }); 
+        
+        const data=await res.json();
+        console.log(data);
+
+        if(res.status===200||data){
+          setStafflist(data);
+        }
+
+        else{
           alert(err.message);
-        })
+        }
       }
       getStaff();
 
