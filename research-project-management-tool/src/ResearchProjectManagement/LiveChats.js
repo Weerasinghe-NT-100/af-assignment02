@@ -10,7 +10,7 @@ return (
  <> 
 
 <div id="Chats-Lives" className="chats-Lives">
-<a className="Chatmeta-btn text-white" href='./SupChatHandle'><img width="400" src={LiChat} /></a>
+<a className="Chatmeta-btn text-white" href='/SupChatHandle'><img width="400" src={LiChat} /></a>
 </div>
  </>
     );

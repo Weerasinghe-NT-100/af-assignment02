@@ -1,39 +1,51 @@
 const router=require("express").Router();
 const nodemailer = require("nodemailer");
-let StudentTopic=require("../Models/StudentTopic.js");
+let Topics=require("../Models/StudentTopic.js");
+const Topic=require("../Models/StudentTopic.js");
 
 http://localhost:8071/studentTopic/add
 
 router.route("/add").post(async(req,res)=>{
+    
+    const LeaderEmail=await Topic.findOne({LeaderEmail:req.body.LeaderEmail});
+
+    if(LeaderEmail){
+      return res.status(500).json({message:"Email has already been used"});
+     }
+
+     else{
 
     const GroupId=req.body.GroupId;
-    const LeaderEmail=req.body.LeaderEmail;
     const GroupDetails=req.body.GroupDetails;
+    const LeaderEmail=req.body.LeaderEmail;
     const ResearchTopic=req.body.ResearchTopic;
 
-    const newTopic=new StudentTopic({
+    const newTopic=new Topics({
          
         GroupId,
-        LeaderEmail,
         GroupDetails,
+        LeaderEmail,
         ResearchTopic
 
     })
 
     newTopic.save().then(()=>{
-        res.json("Topic is added");
+        res.status(200).json("Topic is added");
     }).catch((err)=>{
         console.log(err);
+        res.status(500).json("There is an error with adding the topic");
     })
+  }
 })
 
 http://localhost:8071/studentTopic
 
 router.route("/").get((req,res)=>{
-    StudentTopic.find().then((StudentTopic)=>{
-        res.json(StudentTopic)
+    Topic.find().then((Topic)=>{
+        res.status(200).json(Topic)
     }).catch((err)=>{
-        console.log(err)
+        console.log(err);
+        res.status(404).json("Not found")
     })
 })
 
@@ -42,7 +54,7 @@ http://localhost:8071/studentTopic/delete/5fsadfsad54asdfsad
 router.route("/delete/:id").delete(async(req,res)=>{
 
     let topicid=req.params.id;
-    await StudentTopic.findByIdAndDelete(topicid)
+    await Topic.findByIdAndDelete(topicid)
     .then(()=>{
         res.status(200).send({status:"Topic deleted"});
     }).catch((err)=>{
@@ -63,8 +75,8 @@ router.route("/sendemail/:email").get(async(req,res)=>{
         }
       });
 
-      StudentTopic.findOne({ LeaderEmail: email }).then(newStaff => {
-        if(newStaff){
+        await Topic.findOne({ LeaderEmail: email }).then(newTopic => {
+        if(newTopic){
            var mailOptions = {
         from: 'thathyaniweerasinghe@gmail.com',
         to: `${email}`,
@@ -83,12 +95,10 @@ router.route("/sendemail/:email").get(async(req,res)=>{
       });     
         }
         else{
-            res.send("Email has a error");
+            res.status(404).send("Email has a error");
         }
     })
-       
-     
-       
+         
 
 })
 

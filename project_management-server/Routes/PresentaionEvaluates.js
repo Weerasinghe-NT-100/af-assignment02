@@ -41,20 +41,24 @@ http://localhost:8071/presentationScheme
 
 router.route("/").get((req,res)=>{
     PresentaionSchemas.find().then((PresentaionSchemas)=>{
-        res.json(PresentaionSchemas)
+        res.status(200).json(PresentaionSchemas)
     }).catch((err)=>{
-        console.log(err)
+        console.log(err);
+        res.status(404).json("Presentation schemas are not found");
     })
 })
 
-router.route("/get/:id").get(async(req,res)=>{
-    const Evaluateid=req.params.id;
-    const EvaluateScheme=await PresentaionSchemas.findById(Evaluateid)
-    .then((marks)=>{
-        res.status(200).send({status:"Movie found",marks})
+http://localhost:8071/presentationScheme/delete/5fsadfsad54asdfsad
+
+router.route("/delete/:_id").delete(async(req,res)=>{
+
+    const PresentaionSchemasid=req.params._id;
+    await PresentaionSchemas.findByIdAndDelete(PresentaionSchemasid)
+    .then(()=>{
+        res.status(200).send({status:"Marks deleted",PresentaionSchemasid});
     }).catch((err)=>{
         console.log(err.message);
-        res.status(500).send({status:"Error with get user",error:err.message})
+        res.status(500).send({status:"Error with delete marks",error:err.message});
     })
 })
 

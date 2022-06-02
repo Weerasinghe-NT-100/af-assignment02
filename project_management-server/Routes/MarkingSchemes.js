@@ -42,9 +42,10 @@ http://localhost:8071/markingScheme
 
 router.route("/").get((req,res)=>{
     MarkingScheme.find().then((MarkingScheme)=>{
-        res.json(MarkingScheme)
+        res.status(200).json(MarkingScheme);
     }).catch((err)=>{
-        console.log(err)
+        console.log(err);
+        res.status(404).json("Not found");
     })
 })
 

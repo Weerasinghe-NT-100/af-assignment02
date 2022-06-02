@@ -14,11 +14,6 @@ function SupOperations() {
   const[TopicList,setTopiclist]=useState([]);
   const[EvaluatedList,setEvaluatedlist]=useState([]);
 
-  const [numPages, setNumPages] = useState(null);
-
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
 
   const [newEvaluated,setNewEvaluated]=useState(
     {
@@ -74,6 +69,27 @@ function SupOperations() {
 
         },[]);
 
+        const deleteEvaluatedPresentation=async(_id)=>{
+          const res2=await fetch(`http://localhost:8071/presentationScheme/delete/${_id}`,{
+
+          method:"DELETE",
+          headers:{
+            "Content-Type":"application/json"
+          }
+          });
+
+          const deleteData=await res2.json();
+          console.log(deleteData);
+
+          if(res2.status==200||deleteData){
+            alert("Evaluated prsentation marks deleted");
+          }
+
+          else{
+            alert("Error");
+          }
+        }
+
         var viewItems_HTMLTABLE="";
         var viewEvaluated_HTMLTABLE="";
 
@@ -114,8 +130,8 @@ function SupOperations() {
         <Col><h6 className="card-title"></h6>
         <a href={require(`../Docus/${data.Pmark}`).default} target='_blank'><button className="btnn1">Click here to open the {data.Nevaluate} marks in a new tab</button></a></Col>
         <Col></Col>
+        <Col><button  onClick={()=>deleteEvaluatedPresentation(data._id)} className="btnn1">Delete</button></Col>
        </Row>
-       <div className="line"></div>
       </div>
     </div>
       );
@@ -148,27 +164,26 @@ return (
          <div className="card-body">
           <Row>
           <Col><h6 className="card-title">Student Research Topics</h6>
-          <a href='./ViewTopics' target='_blank'><button className="btnn1">Click here to open the Student Research Topics in a new tab</button></a></Col>
+          <a href='/ViewTopics' target='_blank'><button className="btnn1">Click here to open the Student Research Topics in a new tab</button></a></Col>
           <Col></Col>
          </Row>
-         <div className="line"></div>
         </div>
       </div>
 
   <div className="date">
-     <h4>May 14-21</h4>
+     <h4>May 21-28</h4>
    </div>   
 
   {viewItems_HTMLTABLE}
 
   <div className="card1">
    <div className="date">
-     <h4>May 14-21</h4>
+     <h4>May 29- June 06</h4>
    </div>
   <div className="card-body">
   <div className="containerblock1">
  <form onSubmit={sendPMarks}>
- <p className="text-center h4 fw-bold mb-4 mx-1 mx-md-4 mt-4">Evaluated Presenations Marks upload</p>
+ <p className="text-center h4 fw-bold mb-4 mx-1 mx-md-4 mt-4">Upload Evaluated Presenations Marks</p>
 
  <Row>
   <Col>
@@ -198,14 +213,13 @@ return (
  </div>
 
   <div className="date">
-     <h4>May 14-21</h4>
+     <h4>June 07-14</h4>
    </div>
 
  {viewEvaluated_HTMLTABLE}
 
  </div>
  </div>
- <div className="lines1"></div>
 </div>
  </>
     );

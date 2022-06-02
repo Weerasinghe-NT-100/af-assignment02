@@ -39,8 +39,8 @@ router.route("/add").post(upload.single('imageFiles'),async(req,res)=>{
     const staffEmail=await Staff.findOne({staffEmail:staff.staffEmail});
 
     if(staffEmail){
-        res.json({message:"Email has already been taken"});
-    }
+      res.json({message:"Email has already been taken"});
+     }
 
     else{
          staff.staffPassword=await bcrypt.hash(req.body.staffPassword,8);
@@ -64,11 +64,12 @@ router.route("/add").post(upload.single('imageFiles'),async(req,res)=>{
     })
 
     newStaff.save().then(()=>{
-        res.json("Staff member added");
+        res.status(200).json("Staff member added");
     }).catch((err)=>{
         console.log(err);
+        res.status(500).json("Staff member is not added");
     })
-}
+  }
 
 })
 
@@ -125,10 +126,10 @@ router.route("/get/:email").get(async(req,res)=>{
     const {email}=req.params;
     StaffRegister.findOne({ staffEmail: email }).then(newStaff => {
         if(newStaff){
-               res.send({message:"Staff member found",newStaff:newStaff})
+               return res.status(200).send({message:"Staff member found",newStaff:newStaff})
         }
         else{
-            res.send("not register");
+            return res.status(500).send("not register");
         }
     })
 })
@@ -148,6 +149,7 @@ router.route("/get/staffMember/:id").get(async(req,res)=>{
 
 router.route("/login").post(async(req,res)=>{
     const {email,password} =req.body;
+
     StaffRegister.findOne({ staffEmail: email }).then(newStaff => {
         if (!newStaff) {
           return res.status(404).json({

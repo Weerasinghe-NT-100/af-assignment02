@@ -22,8 +22,7 @@ const RegisterSchema=new Schema({
     },
 
     imageFiles:{
-        type:String,
-        required:true
+        type:String
     },
 
     staffPosition:{
