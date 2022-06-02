@@ -32,7 +32,7 @@ router.route("/add").post(upload.single('markingPaper'),async(req,res)=>{
     })
 
     newMarkingScheme.save().then(()=>{
-        res.json("Topic is added");
+        res.json("Marking scheme added");
     }).catch((err)=>{
         console.log(err);
     })
@@ -53,10 +53,10 @@ router.route("/get/:id").get(async(req,res)=>{
     const MarkingSchemeid=req.params.id;
     const Markingscheme=await MarkingScheme.findById(MarkingSchemeid)
     .then((marking)=>{
-        res.status(200).send({status:"Movie found",marking})
+        res.status(200).send({status:"Marking scheme found",marking})
     }).catch((err)=>{
         console.log(err.message);
-        res.status(500).send({status:"Error with get user",error:err.message})
+        res.status(500).send({status:"Error with get marking scheme",error:err.message})
     })
 })
 

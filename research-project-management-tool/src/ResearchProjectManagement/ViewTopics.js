@@ -3,7 +3,7 @@ import './AllRegister.css';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Row,Col, Table} from 'react-bootstrap';
-import { Tab } from 'bootstrap';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 function ViewTopics() {
 
@@ -60,14 +60,14 @@ function ViewTopics() {
         viewItems_HTMLTABLE=
         TpoicsList.map((data)=>{
         return(
-          <Row key={data._id}>
-          <Col className="Tabletd">{data.GroupId}</Col>
-          <Col className="Tabletd">{data.GroupDetails}</Col>
-          <Col className="Tabletd">{data.LeaderEmail}</Col>
-          <Col className="Tabletd">{data.ResearchTopic}</Col>
-          <Col><Col><button  onClick={()=>deleteTopic(data._id)} className="btnn1">Rejected</button></Col>
-          <Col><button onClick={()=>sendEmail(data.LeaderEmail)} className="btnn2">Accept</button></Col></Col>
-          </Row>
+          <tr key={data._id}>
+          <th className="Tabletd"><h12 className="pfon">{data.GroupId}</h12></th>
+          <th className="Tabletd"><h12 className="pfon">{data.GroupDetails}</h12></th>
+          <th className="Tabletd"><h12 className="pfon">{data.LeaderEmail}</h12></th>
+          <th className="Tabletd"><h12 className="pfon">{data.ResearchTopic}</h12></th>
+          <th className="Tabletd"><th className="Tabletd"><button  onClick={()=>deleteTopic(data._id)} className="btnn1">Rejected</button></th>
+          <th className="Tabletd"><button onClick={()=>sendEmail(data.LeaderEmail)} className="btnn2">Accept</button></th></th>
+          </tr>
 
         );
       });
@@ -86,20 +86,32 @@ return (
 
 <div className="card1">
 
-<Table className="images3">
+<table className="images3" id="topic">
+<thead>
+<tr>
+  <th className="Tabletd"><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Group Id</h5></th>
+  <th className="Tabletd"><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Group Details</h5></th>
+  <th className="Tabletd"><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Leader Email</h5></th>
+  <th className="Tabletd"><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Research Topic</h5></th>
+  <th className="Tabletd"><th></th></th>
 
-<Row>
-  <Col><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Group Id</h5></Col>
-  <Col><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Group Details</h5></Col>
-  <Col><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Leader Email</h5></Col>
-  <Col><h5 className="text-center fw-bold mb-12 mx-1 mx-md-2 mt-1">Research Topic</h5></Col>
-  <Col><Col></Col></Col>
-  
+</tr>
+</thead>
 
-</Row>
+<tbody>
+
  {viewItems_HTMLTABLE}
 
-</Table>
+</tbody>
+
+</table>
+
+<ReactHTMLTableToExcel
+    className="btnn1"
+    table="topic"
+    filename="Accepted Research topics details"
+    sheet="sheet"
+    buttonText="Download as excel sheet" />
 
   </div>
  

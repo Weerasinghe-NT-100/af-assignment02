@@ -53,8 +53,8 @@ http://localhost:8071/studentTopic/delete/5fsadfsad54asdfsad
 
 router.route("/delete/:id").delete(async(req,res)=>{
 
-    let topicid=req.params.id;
-    await Topic.findByIdAndDelete(topicid)
+    let {topicid}=req.params;
+    await Topic.findByIdAndDelete({topicid})
     .then(()=>{
         res.status(200).send({status:"Topic deleted"});
     }).catch((err)=>{

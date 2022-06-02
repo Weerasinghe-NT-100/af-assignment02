@@ -29,7 +29,8 @@
 
   .images3{
     width: 100%;
-    background: rgba(255, 229, 176, 0.541);
+    border: 1px solid rgb(248, 242, 236);
+    background: rgba(237, 236, 232, 0.804);
   }
   
   .images4{
@@ -45,6 +46,14 @@
     width: 100%;
     padding-top: 2px;
     background-image:url('../ResearchTools/SuChat.JPG');
+  }
+
+  .Tabletd{
+    border: 1px solid rgb(190, 167, 140);
+  }
+
+  .pfon{
+    font-style: normal;
   }
     
   .lines{

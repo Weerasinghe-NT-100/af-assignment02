@@ -55,7 +55,7 @@ describe("Evaluated presentation marks",()=>{
         describe("Error with deletion of marks",()=>{
           it("Should return status as 500",async()=>{
 
-            const _id='62979fdb36b4744cdf1123ba';
+            const _id='729fgfgfgfg';
     
             await request(app).delete(`/presentationScheme/delete/${_id}`).expect(500);
           })
