@@ -2,8 +2,11 @@ import React from 'react';
 import './Header.css';
 import {Navbar,Container,Nav} from "react-bootstrap";
 import st from '../ResearchTools/st.jpg';
+import { useParams } from 'react-router-dom';
 
 function Header() {
+
+  const {staffPosition}=useParams("");
 
 return (
 <>
@@ -23,7 +26,7 @@ return (
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <Nav.Link href="/ResearchFaculty">Faculty</Nav.Link>
+      <Nav.Link href={`/ResearchFaculty/${staffPosition}`}>Faculty</Nav.Link>
       <Nav.Link href="#pricing">Departments</Nav.Link>
     </Nav>
     <Nav>

@@ -88,16 +88,14 @@ http://localhost:8071/staffRegister/update/5fsadfsad54asdfsad
 
 router.route("/update/:id").put(async(req,res)=>{
     let staffid=req.params.id;
-    const{staffFirstName,staffLastName,staffId,staffNIC,staffPosition,staffEmail,staffUserName}=req.body;
+    const{staffFirstName,staffLastName,staffId,staffPosition,staffEmail}=req.body;
 
     const updateStaff={
         staffFirstName,
         staffLastName,
         staffId,
-        staffNIC,
         staffPosition,
-        staffEmail,
-        staffUserName
+        staffEmail
     }
 
     const update=await StaffRegister.findByIdAndUpdate(staffid,updateStaff).then(()=>{

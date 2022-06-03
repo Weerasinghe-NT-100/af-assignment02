@@ -5,6 +5,8 @@ import {Row,Col} from 'react-bootstrap';
 import {useHistory} from "react-router";
 import { useParams } from 'react-router-dom';
 import Su3 from '../ResearchTools/Su3.jpg';
+import { Route} from "react-router-dom";
+import {ResearchFaculty,Header} from "../ResearchProjectManagement"
 
 function ViewStaff() {
 
@@ -15,6 +17,8 @@ function ViewStaff() {
     var array;
     var res;
     var res1;
+
+    const history=useHistory();
 
     useEffect(()=>{
 
@@ -40,6 +44,29 @@ function ViewStaff() {
       getStaff();
 
        },[]);
+
+       const deleteStaff=async(_id)=>{
+        const res2=await fetch(`http://localhost:8071/staffRegister/delete/${_id}`,{
+  
+        method:"DELETE",
+        headers:{
+          "Content-Type":"application/json"
+        }
+        });
+  
+        const deleteData=await res2.json();
+        console.log(deleteData);
+  
+        if(res2.status===500||!deleteData){
+          console.log("error");
+        }
+  
+        else{
+          alert("Account deleted");
+          history.push("/");
+          return <Redirect to='/'/>
+        }
+      }
 
 
        var viewItems_HTMLTABLE="";
@@ -78,10 +105,19 @@ function ViewStaff() {
                         <p className="text-center h5 fw mb-3 mx-1 mx-md-3 mt-6">{data.staffEmail}</p>
                         <p className="text-center h5 fw mb-3 mx-1 mx-md-3 mt-6">{data.staffEmail}</p>
                     </div>
+                    <div>
+                        <a href={`/EditStaff/${data._id}`}><button className="btnn1">Edit</button></a>
+                        <button className="btnn2" onClick={()=>deleteStaff(data._id)}>Delete</button>
+                    </div>
                       </div>
                   </div>
               </div>
           </div>
+          <div>
+            <a href={`/SupOperations/${data.staffPosition}/${'Faculty of Computing'}`}><button className="btnn1">Directly redirect to Faculty of Computing &#9658;</button></a>
+          </div>
+            <Route path={`/ResearchFaculty/${data.staffPosition}`} exact component={() => <ResearchFaculty />} />
+            <Route path={`/Header/${data.staffPosition}`} exact component={() => <Header />} />
       </div>
 
         );

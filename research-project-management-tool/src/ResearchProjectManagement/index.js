@@ -3,6 +3,7 @@ export { default as LoginRegister} from "./LoginRegister";
 export { default as HLogin} from "./HLogin";
 export { default as AllRegister} from "./AllRegister";
 export { default as ViewStaff} from "./ViewStaff";
+export { default as EditStaff} from "./EditStaff";
 export { default as ViewTopics} from "./ViewTopics";
 export { default as MarkingScheme} from "./MarkingScheme";
 export { default as MarkingSchemfiles} from "./MarkingSchemfiles";

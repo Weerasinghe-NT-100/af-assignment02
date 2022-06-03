@@ -10,6 +10,9 @@ import { useParams } from 'react-router-dom';
 function SupOperations() {
 
   const {name}=useParams("");
+  const {staffPosition}=useParams("");
+
+  if({staffPosition}=='Co-supervisor'||'Supervisor'){
 
   const[TopicList,setTopiclist]=useState([]);
   const[EvaluatedList,setEvaluatedlist]=useState([]);
@@ -247,6 +250,7 @@ return (
 </div>
  </>
     );
+   }
   }
 
 

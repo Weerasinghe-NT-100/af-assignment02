@@ -3,7 +3,7 @@ import { screen,render } from "@testing-library/react";
 import Header from "../Header.js";
 
 describe('Rending navbar',()=>{
-    test('check text',()=>{
+    test('check elements',()=>{
         render(<Header/>);
     });
 });
