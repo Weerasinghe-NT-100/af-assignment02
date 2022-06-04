@@ -33,6 +33,9 @@ return (
      <ul className="nav navbar-nav navbar-right">
      <Nav.Link href="/AllRegister"><span className="glyphicon glyphicon-user"> Sign Up</span></Nav.Link>
      <Nav.Link href="/HLogin"><span className="glyphicon glyphicon-log-in"> Login</span></Nav.Link>
+     <Nav.Link href="/studentlogin"><span className="glyphicon glyphicon-log-in"> Login student </span></Nav.Link>
+     <Nav.Link href="/register"><span className="glyphicon glyphicon-log-in"> Singup student </span></Nav.Link>
+
     </ul> 
     </Nav>
   </Navbar.Collapse>
