@@ -13,7 +13,7 @@ const server=http.createServer(app);
 
 const io=new Server(server,{
     cors:{
-        origin:"http://localhost:8080",
+        origin:"*",
         methods:["GET","POST"],
     },
 });
@@ -35,6 +35,10 @@ socket.on("send_message",(data)=>{
     })
 });
 
+server.listen(3001, () => {
+    console.log(" RUNNING ON PORT 3001");
+  });
+  
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -59,6 +63,17 @@ const StaffRouter=require("./Routes/StaffRegisters.js");
 const TopicsRouter=require("./Routes/StudentTopics.js");
 const MSchemeRouter=require("./Routes/MarkingSchemes.js");
 const EvaluateRouter=require("./Routes/PresentaionEvaluates.js");
+
+//sathmini
+
+
+app.use("/student", require("./Routes/StudentRoutes"));
+app.use("/groups", require("./Routes/RegisterGroupRoutes"));
+app.use("/topic", require("./Routes/TopicRoutes"));
+app.use("/supervisor", require("./Routes/SupervisorRequest"));
+app.use("/upload", require("./Routes/fileuploadRoutes"));
+
+
 
 http://localhost:8071/staffRegister
 app.use("/staffRegister",StaffRouter);
