@@ -1,12 +1,14 @@
-import React from 'react'
-import { Link } from "react-router-dom";
+
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from "react-router-dom";
  const HomeStudent = () => {
 
   const navigate = useNavigate();
+
     const handleSubmit = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("userRole");
-        navigate("/");
+        navigate("/loginstudent");
     }
   return (
 
@@ -43,7 +45,7 @@ import { Link } from "react-router-dom";
 <div class="card text-center">
  
   <div class="card-body">
-    <h5 class="card-title">Register your group</h5>
+    <h5 class="card-title"> topic register group</h5>
  
     <Link to ="/TopicRegister">
      <button  type="button"  className="btn btn-danger"  >Topic group </button>
@@ -69,7 +71,21 @@ import { Link } from "react-router-dom";
 
   </div>
 </div>
+<br></br>
+<div class="card text-center">
 
+  <div class="card-body">
+    <h5 class="card-title">Request Supervisor - co Supervisor</h5>
+ 
+    <Link to ="/RequestSupervisor
+">
+     <button  type="button"  className="btn btn-danger"  > request </button>
+                                    </Link>
+  </div>
+  <div class="card-footer text-muted">
+
+  </div>
+</div>
 <br></br><br>
 </br>
 <div class="card text-center">

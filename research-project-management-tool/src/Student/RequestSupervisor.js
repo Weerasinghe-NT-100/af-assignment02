@@ -36,7 +36,7 @@ const RequestSupervisor = () => {
 
     axios.post("http://localhost:8080/supervisor/createSupervisorRequest/", createSupervisorRequest);
 
-    Swal.fire("Congrats", "Your Group topic has been apply successfully  success", "success")
+    Swal.fire("Congrats", "Supervisor request  successfully  success", "success")
 
     navigate("/HomeStudent"); 
 
@@ -67,7 +67,7 @@ const RequestSupervisor = () => {
                        
                                <div className="card2 card border-0 px-4 py-5">
                                <form onSubmit={changeOnClick} encType="" >
-    <h1>Registration Topic</h1>
+    <h1>Request supervisor-cosupervisor </h1>
   <div class="form-group">
     <label for="exampleInputEmail1">Grp ID</label>
 
@@ -82,7 +82,7 @@ const RequestSupervisor = () => {
 
   <div class="form-group">
     <label for="exampleInputPassword1">Group leader email</label>
-    <textarea type="email"   onChange={(f) => setGrp_leaderemail(f.target.value)} class="form-control" id="exampleInputPassword1" placeholder="gruop leader  email" aria-describedby="emailHelp"/>
+    <input type="email"   onChange={(f) => setGrp_leaderemail(f.target.value)} class="form-control" id="exampleInputPassword1" placeholder="gruop leader  email" aria-describedby="emailHelp"/>
   </div>
   
 
